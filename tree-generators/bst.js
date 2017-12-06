@@ -72,20 +72,24 @@ BinarySearchTree.prototype.breadthFirstForEach = function (iterator) {
 }
 
 BinarySearchTree.prototype.objectify = function (parentKey) {
-  const result = {
-    name: '',
-    children: []
+  const queue = []
+  const createNode = (value) => ({ [parentKey]: value,  children: [] })
+
+  this.depthFirstForEach(val => queue.push(val), 'in-order')
+
+  queue.reduce((acc, val) => {
+    return objectify(val, acc)
+  }, createNode())
+
+  function objectify(current, value) {
+    if (!current.length) current.name = value
+    if (value < current.name) {
+      if (current.children[0]) objectify(current.children[0], value)
+      else current.children[0] = createNode(value)
+    } else {
+      if (current.children[1]) objectify(current.children[1], value)
+      else current.children[1] = createNode(value)
+    }
+    return current
   }
-
-  this.depthFirstForEach(objectify, 'in-order')
-
-  function objectify(value) {
-    if (!result.length) result.name = value
-    // check value if less or more than
-    // if less check if left
-       // if left >
-    // if more check if right
-  }
-
-  return result
 }
