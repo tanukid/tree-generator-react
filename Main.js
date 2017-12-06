@@ -6,22 +6,22 @@ const myTreeData = [
     name: 'Top Level',
     children: [
       {
-        name: 'Level 2: A',
+        name: 'A',
       },
       {
-        name: 'Level 2: B',
+        name: 'B',
         children: [
           {
-            name: 'Level 2: A',
+            name: 'C',
           },
           {
-            name: 'Level 2: B',
+            name: 'D',
             children: [
               {
-                name: 'Level 2: A',
+                name: 'E',
               },
               {
-                name: 'Level 2: B',
+                name: 'E',
               },
             ],
           },
@@ -32,7 +32,7 @@ const myTreeData = [
 ]
 
 const Main = () => (
-  <div id="treeWrapper" style={{ width: '50em', height: '20em' }}>
+  <div id="treeWrapper" style={{ width: "100vh", height: "100vh" }}>
     <Tree data={myTreeData} />
   </div>
 )
