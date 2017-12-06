@@ -1,4 +1,4 @@
-import React, {PureComponent} from 'react'
+import React, { PureComponent } from 'react'
 import Tree from 'react-d3-tree'
 import BST from './tree-generators/bst'
 
@@ -7,22 +7,22 @@ const data = [
     name: 'Top Level',
     children: [
       {
-        name: 'A',
+        name: 1,
       },
       {
-        name: 'B',
+        name: 2,
         children: [
           {
-            name: 'C',
+            name: 3,
           },
           {
-            name: 'D',
+            name: 4,
             children: [
               {
-                name: 'E',
+                name: 5,
               },
               {
-                name: 'E',
+                name: 6,
               },
             ],
           },

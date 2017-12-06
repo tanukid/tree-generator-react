@@ -1,4 +1,3 @@
-
 export default BinarySearchTree
 
 function BinarySearchTree(value) {
@@ -70,4 +69,23 @@ BinarySearchTree.prototype.breadthFirstForEach = function (iterator) {
     if (tree.left) queue.push(tree.left)
     if (tree.right) queue.push(tree.right)
   }
+}
+
+BinarySearchTree.prototype.objectify = function (parentKey) {
+  const result = {
+    name: '',
+    children: []
+  }
+
+  this.depthFirstForEach(objectify, 'in-order')
+
+  function objectify(value) {
+    if (!result.length) result.name = value
+    // check value if less or more than
+    // if less check if left
+       // if left >
+    // if more check if right
+  }
+
+  return result
 }
