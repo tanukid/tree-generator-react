@@ -1,7 +1,8 @@
-import React from 'react'
+import React, {PureComponent} from 'react'
 import Tree from 'react-d3-tree'
+import BST from './tree-generators/bst'
 
-const myTreeData = [
+const data = [
   {
     name: 'Top Level',
     children: [
@@ -31,10 +32,39 @@ const myTreeData = [
   },
 ]
 
-const Main = () => (
-  <div id="treeWrapper" style={{ width: "100vh", height: "100vh" }}>
-    <Tree data={myTreeData} />
-  </div>
-)
+const containerStyles = {
+  width: '100%',
+  height: '100vh',
+}
+
+class Main extends React.PureComponent {
+
+  constructor() {
+    super()
+    this.state = {}
+  }
+
+  componentDidMount() {
+    const dimensions = this.treeContainer.getBoundingClientRect();
+    this.setState({
+      translate: {
+        x: dimensions.width / 2,
+        y: dimensions.height / 2
+      }
+    })
+  }
+
+  render() {
+    return (
+      <div style={containerStyles} ref={tc => (this.treeContainer = tc)}>
+        <Tree
+          data={data}
+          translate={this.state.translate}
+          orientation={'vertical'}
+        />
+      </div>
+    );
+  }
+}
 
 export default Main
